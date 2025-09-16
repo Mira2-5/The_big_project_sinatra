@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Gossip</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+
+      .container {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+      }
+
+      p {
+        background-color: #ffffff;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 15px;
+      }
+
+      a {
+        color: #2980b9;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      hr {
+        margin: 30px 0;
+        border: none;
+        height: 1px;
+        background-color: #ccc;
+      }
+    </style>
+  </head>
+
+   <body>
+    <div class="container">
+      <h1>Bienvenue sur l'application à potins !</h1>
+      <p>Ce site te permet de lire et d'écrire des potins en toute discrétion 🤫</p>
+
+      <hr>
+
+      <h1>Liste des potins</h1>
+      <% @gossips.each_with_index do |gossip, index| %>   <!-- <- @ ici -->
+        <p>
+          Potin n° <%= index + 1 %>
+          <strong><%= gossip.author %></strong> : <%= gossip.content %>
+          <br>
+          <a href="/gossips/<%= index %>/">Voir</a>
+        </p>
+      <% end %>
+
+      <hr>
+
+      <a href="/gossips/new/">Ecrire un nouveau potin</a>
+    </div>
+  </body>
+  
+</html>

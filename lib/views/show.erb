@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Potin</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #2c3e50;
+      }
+
+      .gossip-box {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+      }
+
+      .gossip-box strong {
+        color: #34495e;
+      }
+
+      a {
+        display: block;
+        margin-top: 20px;
+        color: #2980b9;
+        text-decoration: none;
+      }
+
+      textarea {
+        width: 100%;
+        height: 80px;
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        resize: vertical;
+      }
+
+      input[type="submit"] {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #2ecc71;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #27ae60;
+      }
+
+      .action-links {
+        margin-top: 20px;
+      }
+
+      .action-links a {
+        display: inline-block;
+        margin-right: 15px;
+        padding: 8px 12px;
+        background-color: #2980b9;
+        color: white;
+        border-radius: 4px;
+        text-decoration: none;
+      }
+      
+
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <% if @gossip %>
+        <h1>Potin n°<%= @id + 1 %></h1>
+
+        <div class="gossip-box">
+          <p><strong>Auteur :</strong> <%= @gossip.author %></p>
+          <p><strong>Contenu :</strong> <%= @gossip.content %></p>
+        </div>
+
+        <!-- Liens Modifier et Supprimer -->
+        <div class="action-links">
+          <a href="/gossips/<%= @id %>/edit/">Modifier ce potin</a>
+
+          <form action="/gossips/<%= @id %>/delete/" method="post" style="display:inline;" onsubmit="return confirm('Es-tu sûr de vouloir supprimer ce potin ?');">
+            <button type="submit" class="delete" style="border:none; padding:8px 12px; cursor:pointer; border-radius:4px; color:white; background-color: #2980b9; font-size:15px;">Supprimer ce potin</button>
+          </form>
+        </div>
+
+        <br> 
+        <hr>
+        <h1>Commentaires</h1>
+        <% if @comments.any? %>
+          <% @comments.each_with_index do |comment, i| %>
+            <p><strong>Commentaire <%= i + 1 %> par <%= comment.author %> :</strong> <%= comment.content %></p>
+          <% end %>
+        <% else %>
+          <p>Aucun commentaire pour l’instant.</p>
+        <% end %>
+
+        <h3>Ajouter un commentaire</h3>
+        <form action="/gossips/<%= @id %>/comments" method="post">
+          <input type="text" name="comment_author" placeholder="Ton pseudo" required><br><br>
+          <textarea name="comment_content" placeholder="Ton commentaire..." required></textarea><br>
+          <input type="submit" value="Publier le commentaire">
+        </form>
+      <% else %>
+        <p>Aucun potin trouvé.</p>
+      <% end %>
+
+      <a href="/">← Retour à l'accueil</a>
+    </div>
+  </body>
+</html>
+

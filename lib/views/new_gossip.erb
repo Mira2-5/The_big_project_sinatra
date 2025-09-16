@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Créer un nouveau potin</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #2c3e50;
+      }
+
+      form {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+
+      input[type="text"],
+      textarea {
+        width: 80%;
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      textarea {
+        height: 100px;
+      }
+
+      input[type="submit"] {
+        background-color: #2ecc71;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #27ae60;
+      }
+
+      a {
+        display: block;
+        margin-top: 20px;
+        color: #2980b9;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Ecrire un nouveau potin</h1>
+
+      <form action="/gossips/new/" method="post">
+        <input type="text" name="gossip_author" placeholder="Ton pseudo" required />
+        <textarea name="gossip_content" placeholder="Balance ton potin..." required></textarea>
+        <input type="submit" value="Publier le potin" />
+      </form>
+
+      <a href="/">← Retour à l'accueil</a>
+    </div>
+  </body>
+</html>
+

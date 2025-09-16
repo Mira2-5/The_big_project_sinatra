@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Modifier le potin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 1px 1px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    form {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #2980b9;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #1c5980;
+    }
+
+    form.delete-form input[type="submit"] {
+      background-color: #e74c3c;
+    }
+
+    form.delete-form input[type="submit"]:hover {
+      background-color: #c0392b;
+    }
+
+    a {
+      color: #2980b9;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Modifier le potin</h1>
+
+    <form action="/gossips/<%= @gossip.id %>/edit/" method="post">
+      <label for="gossip_author">Auteur :</label>
+      <input type="text" id="gossip_author" name="gossip_author" value="<%= @gossip.author %>">
+
+      <label for="gossip_content">Potin :</label>
+      <input type="text" id="gossip_content" name="gossip_content" value="<%= @gossip.content %>">
+
+      <input type="submit" value="Mettre à jour">
+    </form>
+
+   
+    <a href="/gossips/<%= @gossip.id %>/">Annuler</a>
+  </div>
+</body>
+</html>
+
