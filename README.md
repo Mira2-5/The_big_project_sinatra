@@ -34,21 +34,23 @@ Structure du projet :
 
 the_big_project_sinatra/
 │
-├── config.ru                  
-├── Gemfile                  
-├── Gemfile.lock              
+├── config.ru                  # Fichier de configuration pour Rack
+├── Gemfile                   # Fichier de déclaration des gems
+├── Gemfile.lock              # Versions figées des gems
 │
 ├── db/
-│   ├── gossips.csv           
-│   └── comments.csv          
+│   ├── gossips.csv           # Base de données CSV des potins
+│   └── comments.csv          # Base de données CSV des commentaires
 │
 └── lib/
-    ├── controller.rb         
-    ├── gossip.rb            
-    ├── comment.rb            
+    ├── controller.rb         # Contrôleur principal de l'application
+    ├── gossip.rb             # Classe Gossip (CRUD sur les potins)
+    ├── comment.rb            # Classe Comment (CRUD sur les commentaires)
     │
     └── views/
-        ├── index.erb         
-        ├── new_gossip.erb    
-        ├── show.erb         
-        ├── edit.erb         
+        ├── index.erb         # Page d’accueil avec tous les potins
+        ├── new_gossip.erb    # Formulaire de création d’un potin
+        ├── show.erb          # Affichage d’un potin avec ses commentaires
+        ├── edit.erb          # Formulaire de modification d’un potin
+
+        
